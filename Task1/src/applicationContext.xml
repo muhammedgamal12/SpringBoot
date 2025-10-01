@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--    this is the dependency bean-->
+    <bean id="drawBean2d"
+          class="com.example.Draw2D">
+    </bean>
+
+    <bean id = "drawBean3d"
+          class="com.example.Draw3D">
+    </bean>
+
+    <!-- constructor injection -->
+    <bean id="circle" class="com.example.Circle">
+        <constructor-arg ref="drawBean2d"/>
+    </bean>
+    <!-- Setter injection -->
+    <bean id="rectangle" class="com.example.Square">
+        <property name="draw3D" ref="drawBean3d"/>
+    </bean>
+
+
+    <bean id="db" class="com.vehicle.DatabaseOperations">
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
+
+    <!-- constructor injection -->
+    <bean id="car" class="com.vehicle.Car">
+        <constructor-arg ref="db"/>
+    </bean>
+    <!-- Setter injection -->
+    <bean id="plane" class="com.vehicle.Plane">
+        <property name="databaseOperations" ref="db"/>
+    </bean>
+
+    <context:property-placeholder location="classpath:application.properties"/>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
