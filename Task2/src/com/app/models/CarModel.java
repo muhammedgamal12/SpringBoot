@@ -7,16 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 @Scope("prototype")
-public class CarModel {
+public class CarModel extends Vehicles {
 
-    String company;
-    String model;
-    String production_year;
-    Double price;
+  String speed;
 
 
+  public CarModel(String company, String model, String production_year, Double price,String speed) {
+    super(company, model, production_year, price);
+    this.speed=speed;
+  }
 }

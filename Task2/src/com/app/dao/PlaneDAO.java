@@ -3,6 +3,7 @@ package com.app.dao;
 import com.app.config.DatabaseConfig;
 import com.app.models.CarModel;
 import com.app.models.PlaneModel;
+import com.app.models.Vehicles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +21,9 @@ public class PlaneDAO {
         this.databaseConfig = databaseConfig;
     }
 
-    public void save(PlaneModel planeModel) throws SQLException {
-        String sql = "INSERT INTO vehicle (company,model,production_year,price) VALUES (?,?,?,?)";
+    public void save(Vehicles vehicles) throws SQLException {
+        String sql = "INSERT INTO vehicle VALUES (?,?,?,?,?)";
+        PlaneModel planeModel = (PlaneModel) vehicles;
 
         PreparedStatement p = databaseConfig.connectDB().prepareStatement(sql);
 
@@ -29,6 +31,8 @@ public class PlaneDAO {
         p.setString(2,planeModel.getModel());
         p.setString(3,planeModel.getProduction_year());
         p.setDouble(4, planeModel.getPrice());
+        p.setString(5, String.valueOf(planeModel.getRate()));
+
 
         p.executeUpdate();
 

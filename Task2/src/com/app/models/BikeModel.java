@@ -10,15 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 @Scope("prototype")
-public class BikeModel {
+public class BikeModel extends Vehicles {
 
-    String company;
-    String model;
-    String production_year;
-    Double price;
+String color;
 
 
+    public BikeModel(String company, String model, String production_year, Double price, String color) {
+        super(company, model, production_year, price);
+        this.color=color;
+    }
 }

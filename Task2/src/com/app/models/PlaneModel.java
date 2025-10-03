@@ -10,15 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Scope("prototype")
-public class PlaneModel {
+public class PlaneModel extends Vehicles {
 
-    String company;
-    String model;
-    String production_year;
-    Double price;
+    Rate rate;
 
 
+    public PlaneModel(String company, String model, String production_year, Double price ,Rate rate) {
+        super(company, model, production_year, price);
+        this.rate =rate;
+    }
 }
