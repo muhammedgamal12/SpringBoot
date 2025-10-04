@@ -1,7 +1,7 @@
 import com.app.config.Config;
 import com.app.models.CarModel;
 import com.app.models.Vehicles;
-import com.app.service.ModelsService;
+import com.app.service.VehiclesService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,7 +12,7 @@ public class Main {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
-        ModelsService service = (ModelsService) context.getBean("modelsService");
+        VehiclesService service = (VehiclesService) context.getBean("modelsService");
         Vehicles vehicles =new CarModel("Hyundai","Tuson","2024",5402154.0,"110 km/h");
 
     }

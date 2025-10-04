@@ -3,9 +3,6 @@ package com.app.service;
 import com.app.dao.BikeDAO;
 import com.app.dao.CarDAO;
 import com.app.dao.PlaneDAO;
-import com.app.models.BikeModel;
-import com.app.models.CarModel;
-import com.app.models.PlaneModel;
 import com.app.models.Vehicles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,12 +10,12 @@ import org.springframework.stereotype.Component;
 import java.sql.SQLException;
 
 @Component
-public class ModelsService {
+public class VehiclesService {
     BikeDAO bikeDAO;
     PlaneDAO planeDAO;
     CarDAO carDAO;
     @Autowired
-    public ModelsService(BikeDAO bikeDAO, PlaneDAO planeDAO, CarDAO carDAO) {
+    public VehiclesService(BikeDAO bikeDAO, PlaneDAO planeDAO, CarDAO carDAO) {
         this.bikeDAO = bikeDAO;
         this.planeDAO = planeDAO;
         this.carDAO = carDAO;
